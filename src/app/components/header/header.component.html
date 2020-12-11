@@ -4,14 +4,24 @@
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
   </form>
-  <ul class="nav justify-content-end">
+  <ul class="nav justify-content-end" *ngIf="!ingelogd">
     <li class="nav-item">
-      <a class="nav-link" href="#" >Inloggen</a>
+      <a class="nav-link" href="/inloggen" >Inloggen</a>
     </li>
     <li class="nav-item" >
-      <a class="nav-link" routerLinkActive="active" href="/registreren">Registreren</a>
+      <a class="nav-link" href="/registreren">Registreren</a>
+    </li>
+
+  </ul>
+  <ul class="nav justify-content-end" *ngIf="ingelogd">
+    <li class="nav-item">
+      <a class="nav-link" href="/profiel" >{{ gebruiksnaam }}</a>
+    </li>
+    <li class="nav-item" >
+      <a class="nav-link" (click)="uitloggen()">Uitloggen</a>
     </li>
   </ul>
+
 </nav>
 <div class="container">
 <router-outlet></router-outlet>
