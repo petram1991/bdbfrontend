@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RegistreerComponent } from './components/registreer/registreer.component';
 import {AppRoutingModule} from './app-routing.module';
 import { InloggenComponent } from './components/inloggen/inloggen.component';
+import { ArtikelenComponent } from './components/artikelen/artikelen.component';
 
 
 
@@ -16,7 +17,8 @@ import { InloggenComponent } from './components/inloggen/inloggen.component';
     AppComponent,
     HeaderComponent,
     RegistreerComponent,
-    InloggenComponent
+    InloggenComponent,
+    ArtikelenComponent
   ],
   imports: [
     BrowserModule,
