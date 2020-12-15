@@ -22,8 +22,6 @@ export class InloggenComponent {
     private router: Router,
     private route: ActivatedRoute
   ) { }
-
-
   onSubmit(): void {
     const { gebruiksnaam, wachtwoord } = this.form;
 
@@ -31,7 +29,7 @@ export class InloggenComponent {
       () => {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.router.navigate([''], {relativeTo: this.route});
+        this.router.navigate(['/'], {relativeTo: this.route});
       },
       err => {
         this.errorMessage = err.error.message;

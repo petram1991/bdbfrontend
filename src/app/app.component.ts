@@ -6,17 +6,10 @@ import {AuthService} from './services/auth.services';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'bdbfrontend';
   ingelogd = false;
   gebruiksnaam?: string;
   constructor(private authServices: AuthService) {
-  }
-
-  ngOnInit(): void {
-    if (this.ingelogd){
-      const gebruiker = this.authServices.getGebruiker();
-      this.gebruiksnaam = gebruiker.gebruiksnaam;
-    }
   }
 }
