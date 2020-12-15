@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthService} from './services/auth.services';
 
 @Component({
@@ -8,8 +8,15 @@ import {AuthService} from './services/auth.services';
 })
 export class AppComponent {
   title = 'bdbfrontend';
+  ingelogdeGebruiksnaam$ = this.authServices.ingelogdeGebruiksnaam$;
+
   ingelogd = false;
-  gebruiksnaam?: string;
+  ingelogdeGebruiksnaam: string;
+
   constructor(private authServices: AuthService) {
+    this.ingelogdeGebruiksnaam$.subscribe((g) => {
+      this.ingelogd = true;
+      this.ingelogdeGebruiksnaam = g;
+    });
   }
 }

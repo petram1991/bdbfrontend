@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.services';
 
 @Component({
@@ -7,10 +7,15 @@ import { AuthService } from '../../services/auth.services';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  ingelogdeGebruiksnaam$ = this.authServices.ingelogdeGebruiksnaam$;
 
   ingelogd = false;
-  gebruiksnaam?: string;
+  ingelogdeGebruiksnaam: string;
   constructor(private authServices: AuthService) {
+    this.ingelogdeGebruiksnaam$.subscribe((g) => {
+      this.ingelogd = true;
+      this.ingelogdeGebruiksnaam = g;
+    });
   }
   signOut(): void {
     window.sessionStorage.clear();
@@ -18,5 +23,8 @@ export class HeaderComponent {
   uitloggen(): void{
     this.signOut();
     window.location.reload();
+  }
+  isIngelogd(): boolean {
+    return this.ingelogd;
   }
 }

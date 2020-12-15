@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.services';
+import {Component} from '@angular/core';
+import {AuthService} from '../../services/auth.services';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Gebruiker} from '../../modals/gebruiker';
 
@@ -24,13 +24,17 @@ export class InloggenComponent {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
+  }
+
   login(): void {
 
-    const { gebruiksnaam, wachtwoord } = this.form;
+    const {gebruiksnaam, wachtwoord} = this.form;
     this.authService.inloggen(gebruiksnaam, wachtwoord);
     this.gebruiker = {} as Gebruiker;
+    this.router.navigate(['/'], {relativeTo: this.route});
   }
+
   // onSubmit(): void {
   //
   //
@@ -38,7 +42,6 @@ export class InloggenComponent {
   //     () => {
   //       this.isLoginFailed = false;
   //       this.isLoggedIn = true;
-  //       this.router.navigate(['/'], {relativeTo: this.route});
   //     },
   //     err => {
   //       this.errorMessage = err.error.message;

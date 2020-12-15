@@ -1,26 +1,26 @@
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href=" ">BelastingDienst Bazaar</a>
+  <a class="navbar-brand" routerLink="/">BelastingDienst Bazaar</a>
   <form class="form-inline my-2 my-lg-0">
-    <ul class="nav">
+    <ul class="nav" *ngIf="isIngelogd()">
       <li class="nav-item">
-        <a class="nav-link" href="/nieuw">Nieuw</a>
+        <a class="nav-link" routerLink="/nieuw">aanmaken artikel</a>
       </li>
     </ul>
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
   </form>
-  <ul class="nav justify-content-end" *ngIf="!ingelogd">
+  <ul class="nav justify-content-end" *ngIf="!isIngelogd()">
     <li class="nav-item">
-      <a class="nav-link" href="/inloggen" >Inloggen</a>
+      <a class="nav-link" routerLink="/inloggen" >Inloggen</a>
     </li>
     <li class="nav-item" >
-      <a class="nav-link" href="/registreren">Registreren</a>
+      <a class="nav-link" routerLink="/registreren">Registreren</a>
     </li>
 
   </ul>
-  <ul class="nav justify-content-end" *ngIf="ingelogd">
+  <ul class="nav justify-content-end" *ngIf="isIngelogd()">
     <li class="nav-item">
-      <a class="nav-link" href="/profiel" >{{ gebruiksnaam }}</a>
+      <a class="nav-link" routerLink="/profiel" >{{ ingelogdeGebruiksnaam }}</a>
     </li>
     <li class="nav-item" >
       <a class="nav-link" (click)="uitloggen()">Uitloggen</a>
