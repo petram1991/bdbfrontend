@@ -1,3 +1,11 @@
 #test{
   align-content: end;
 }
+.uitloggen{
+  color: #007bff;
+  font-weight: bold;
+}
+.uitloggen:hover{
+  color: #334b98;
+}
+

@@ -40,8 +40,7 @@ export class InloggenComponent {
   //
   //   this.authService.inloggen(gebruiksnaam, wachtwoord).subscribe(
   //     () => {
-  //       this.isLoginFailed = false;
-  //       this.isLoggedIn = true;
+  //
   //     },
   //     err => {
   //       this.errorMessage = err.error.message;

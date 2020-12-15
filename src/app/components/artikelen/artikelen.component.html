@@ -1,21 +1,20 @@
-<p>artikelen works!</p>
-
 <div class="container">
   <div class="center">
+    <h1 style="text-align: center">Nieuw artikel aanmaken</h1>
     <form
       name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
+      (ngSubmit)="f.form.valid && addArtikel()"
       #f="ngForm"
       novalidate
     >
         <label for="inputFirstName">Naam:</label>
-        <input type="text"  name="naam" [(ngModel)]="form.naam"
+        <input type="text"  name="naam" [(ngModel)]="newArtikel.naam"
                id="inputFirstName" class="form-control"><br>
         <label for="inputSurname">omscrijving:</label>
-        <input type="text" [(ngModel)]="form.omschrijving" name="omschrijving"
+        <input type="text" [(ngModel)]="newArtikel.omschrijving" name="omschrijving"
                id="inputSurname" class="form-control"><br>
         <label for="inputPrijs">Prijs:</label>
-        <input type="text" [(ngModel)]="form.prijs" name="prijs" id="inputPrijs"
+        <input type="text" [(ngModel)]="newArtikel.prijs" name="prijs" id="inputPrijs"
                class="form-control"><br>
         <button class="btn btn-primary">Opslaan</button>
       <div class="alert alert-warning" *ngIf="f.submitted && mislukt">
