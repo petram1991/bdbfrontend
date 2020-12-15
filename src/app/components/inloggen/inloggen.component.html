@@ -3,7 +3,7 @@
     <form
       *ngIf="!isLoggedIn"
       name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
+      (ngSubmit)="f.form.valid && login()"
       #f="ngForm"
       novalidate
       >
@@ -57,6 +57,7 @@
           *ngIf="f.submitted && isLoginFailed"
         >
           Login failed: {{ errorMessage }}
+          <p>{{message$ | async}}</p>
         </div>
       </div>
     </form>

@@ -1,13 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable, Subject} from 'rxjs';
 import {Gebruiker} from '../modals/gebruiker';
 
 const api = 'http://localhost:9080/bdbbackend_war_exploded/resources/auth/';
-const GEBRUIKER_SLEUTEL = 'auth-user';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
 @Injectable({
@@ -18,7 +17,7 @@ export class AuthService {
   }
 
   ingelogdeGebruiker = {} as Gebruiker;
-  ingelogdeGebruiksnaam = new Subject<string>();
+  ingelogdeGebruiksnaam$ = new Subject<string>();
   message$ = new Subject<string>();
 
   registreer(gebruiksnaam: string, email: string, wachtwoord: string): Observable<any> {
@@ -28,19 +27,25 @@ export class AuthService {
       wachtwoord
     }, httpOptions);
   }
-  inloggen(gebruiksnaam: string, wachtwoord: string): Observable<any> {
-    return this.http.post(api + 'inloggen', {
-      gebruiksnaam,
-      wachtwoord
-    }, httpOptions);
-  }
-  login(gebruiker: Gebruiker): void {
-    this.http.post<Gebruiker>( api + 'login', gebruiker).subscribe(
-      data => {
-        this.ingelogdeGebruiker = data;
-        this.ingelogdeGebruiksnaam.next(this.ingelogdeGebruiker.gebruiksnaam);
-        this.message$.next(`gebruiker ${data.gebruiksnaam} is ingelogd.`);
+
+  // login(gebruiksnaam: string, wachtwoord: string): Observable<any> {
+  //   return this.http.post(api + 'inloggen', {
+  //     gebruiksnaam,
+  //     wachtwoord
+  //   }, httpOptions);
+  // }
+  inloggen(gebruiksnaam: string, wachtwoord: string): void {
+    this.http.post<Gebruiker>(api + 'inloggen', {gebruiksnaam, wachtwoord}).subscribe(
+      response => {
+        this.ingelogdeGebruiker = response;
+        this.ingelogdeGebruiksnaam$.next(this.ingelogdeGebruiker.gebruiksnaam);
+        this.message$.next(`gebruiker ${response.gebruiksnaam} is ingelogd.`);
+      },
+      error => {
+        console.log(error);
+        this.message$.next(`inloggen is mislukt. ${error.statusText}`);
       }
     );
   }
+
 }
