@@ -1,4 +1,4 @@
-export class Gebruiker {
+export interface Gebruiker {
   id: number;
   gebruiksnaam: string;
   email: string;

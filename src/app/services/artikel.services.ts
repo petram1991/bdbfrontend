@@ -26,6 +26,14 @@ export class ArtikelServices {
     return this.artikelsUpdated$;
   }
 
+  geefEen(a: Artikel): void {
+    this.http.get<Artikel[]>(`${this.url}/${a.id}`)
+      .subscribe(() => this.geefAlles());
+  }
+  geefArtikel(id): Observable<Artikel> {
+    return this.http.get<Artikel>(this.url + id);
+  }
+
   nieuw(a: Artikel): void {
     this.http.post<Artikel[]>(this.url + 'nieuw', a).subscribe(() => this.geefAlles());
   }

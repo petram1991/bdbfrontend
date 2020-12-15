@@ -11,6 +11,7 @@ import { InloggenComponent } from './components/inloggen/inloggen.component';
 import { ArtikelenComponent } from './components/artikelen/artikelen.component';
 import { AlleArtikelenComponent } from './components/alle-artikelen/alle-artikelen.component';
 import { HomeComponent } from './pages/home';
+import { EenArtikelComponent } from './components/een-artikel/een-artikel.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { HomeComponent } from './pages/home';
     ArtikelenComponent,
     AlleArtikelenComponent,
     HomeComponent,
+    EenArtikelComponent,
   ],
   imports: [
     BrowserModule,
