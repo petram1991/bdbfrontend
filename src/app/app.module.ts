@@ -9,7 +9,8 @@ import { RegistreerComponent } from './components/registreer/registreer.componen
 import {AppRoutingModule} from './app-routing.module';
 import { InloggenComponent } from './components/inloggen/inloggen.component';
 import { ArtikelenComponent } from './components/artikelen/artikelen.component';
-
+import { AlleArtikelenComponent } from './components/alle-artikelen/alle-artikelen.component';
+import { HomeComponent } from './pages/home';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { ArtikelenComponent } from './components/artikelen/artikelen.component';
     HeaderComponent,
     RegistreerComponent,
     InloggenComponent,
-    ArtikelenComponent
+    ArtikelenComponent,
+    AlleArtikelenComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
