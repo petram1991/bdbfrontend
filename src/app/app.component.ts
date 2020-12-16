@@ -7,7 +7,7 @@ import {AuthService} from './services/auth.services';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'bdbfrontend';
+  title = 'Belastingdienst Bazaar';
   ingelogdeGebruiksnaam$ = this.authServices.ingelogdeGebruiksnaam$;
 
   ingelogd = false;
