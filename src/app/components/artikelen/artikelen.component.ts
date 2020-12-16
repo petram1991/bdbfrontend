@@ -31,7 +31,7 @@ export class ArtikelenComponent {
       data => {
         console.log(data);
         this.mislukt = false;
-        this.router.navigate(['/'], {relativeTo: this.route});
+        this.router.navigate(['/test'], {relativeTo: this.route});
       },
       error => {
         this.errorMessage = error.error.massage;
